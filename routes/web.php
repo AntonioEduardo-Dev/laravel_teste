@@ -14,5 +14,8 @@ use App\Http\Controllers\BookController;
 |
 */
 
-Route::get('/', [BookController::class, 'index']);
+// Route::get('/books', [BookController::class, 'index']);
+Route::resource('books', BookController::class)->only([
+    'index', 'show'
+]);
 

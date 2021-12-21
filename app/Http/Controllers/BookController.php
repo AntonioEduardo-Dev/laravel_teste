@@ -24,8 +24,9 @@ class BookController extends Controller
      */
     public function index()
     {
-        dd($this->objUser->find(1)->relBooks);
-        // return view('index');
+        // dd($this->objUser->find(1)->relBooks);
+        $books = $this->objBook->all()->sortBy('name');
+        return view('index', compact('books'));
     }
 
     /**
@@ -57,7 +58,9 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        //
+        // echo $id;
+        $books = $this->objBook->find($id);
+        return view('show', compact('books'));
     }
 
     /**
