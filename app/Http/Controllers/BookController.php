@@ -8,15 +8,6 @@ use App\Models\User;
 
 class BookController extends Controller
 {
-    private $objUser;
-    private $objBook;
-
-    public function __construct()
-    {
-        $this->objUser = new User();
-        $this->objBook = new ModelBook();
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +16,7 @@ class BookController extends Controller
     public function index()
     {
         // dd($this->objUser->find(1)->relBooks);
-        $books = $this->objBook->all()->sortBy('name');
+        $books = ModelBook::all();
         return view('index', compact('books'));
     }
 
@@ -36,7 +27,9 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        // dd(ModelBook::all());
+        $users = User::all();
+        return view('create', compact('users'));
     }
 
     /**
@@ -47,7 +40,16 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cad = ModelBook::create([
+            'user_id'=>$request->user_id,
+            'title'=>$request->title,
+            'pages'=>$request->pages,
+            'price'=>$request->price
+        ]);
+        if ($cad) {
+            return redirect('books');
+        }
+
     }
 
     /**
@@ -59,7 +61,7 @@ class BookController extends Controller
     public function show($id)
     {
         // echo $id;
-        $books = $this->objBook->find($id);
+        $books = ModelBook::find($id);
         return view('show', compact('books'));
     }
 

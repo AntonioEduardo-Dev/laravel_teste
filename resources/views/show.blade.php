@@ -3,6 +3,13 @@
 @section('content')
     <h2 class="text-center">Visualizar crud</h2>
     <hr>
+    <div class="text-center mt-3 mb-3">
+        <a href="{{url('books/')}}">
+            <button class="btn btn-success text-center">
+                Listar
+            </button>
+        </a>
+    </div>
     <div class="col-8 m-auto">
         @php
             $user = $books->find($books->id)->relUsers;

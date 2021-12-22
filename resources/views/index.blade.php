@@ -6,9 +6,11 @@
     <hr>
 
     <div class="text-center mt-3 mb-3">
-        <button class="btn btn-success text-center">
-            Cadastrar
-        </button>
+        <a href="{{url('books/create')}}">
+            <button class="btn btn-success text-center">
+                Cadastrar
+            </button>
+        </a>
     </div>
 
     <div class="col-8 m-auto">
