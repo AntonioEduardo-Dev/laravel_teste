@@ -11,7 +11,7 @@
         </a>
     </div>
     @if(isset($errors) && count($errors) > 0)
-        <div class="text-center alert-danger mt-3 mb-3">
+        <div class="text-center alert-danger mt-3 pl-3">
             @foreach($errors->all() as $erro)
                 {{$erro}}<br>
             @endforeach
